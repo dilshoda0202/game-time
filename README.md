@@ -1,9 +1,9 @@
 # Steps to install game on local computer:
-### Step 1: Open repository https://github.com/dilshoda0202/game-time on GitHub
-### Step 2:Fork repository
-### Step 3: Clone repository to local machine
-### Step 4: Open game-time directory in local machine
-### Step 5: Open index.html in browser
+1. Step 1: Open repository https://github.com/dilshoda0202/game-time on GitHub
+2. Step 2:Fork repository
+3. Step 3: Clone repository to local machine
+4. Step 4: Open game-time directory in local machine
+5. Step 5: Open index.html in browser
 
 ### You can slso visit: https://my-pacman-game.netlify.app/ to play game
 
@@ -86,6 +86,20 @@ map.forEach((row, i) => {
                 break
 ```
 
+## Pellets and Score:
+``` JavaScript
+    for (let i = pellets.length - 1; 0 < i; i--) {
+        const pellet = pellets[i]
+        pellet.draw()
+
+        if (Math.hypot(pellet.position.x - player.position.x, pellet.position.y - player.position.y) < pellet.radius + player.radius) {
+            console.log('touching')
+            pellets.splice(i, 1)
+            score += 10
+            scoreEl.innerHTML = score
+        }
+```
+ Creation of pellets and dissapearing once PacMan eats them. Score increases by 10 per pellet eaten. 
 
 
 
