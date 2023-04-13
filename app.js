@@ -457,7 +457,7 @@ function animate() {
         pellet.draw()
 
         if (Math.hypot(pellet.position.x - player.position.x, pellet.position.y - player.position.y) < pellet.radius + player.radius) {
-            console.log('touching')
+            // console.log('touching')
             pellets.splice(i, 1)
             score += 10
             scoreEl.innerHTML = score
@@ -482,17 +482,11 @@ function animate() {
             })
             document.body.appendChild(reset)
 
-            console.log('You Win')
+            // console.log('You Win')
             cancelAnimationFrame(animationID)
         }
     }
 
-    // win condition
-    // if (score === 700) {
-    //     alert('You Win!')
-    //     console.log('You Win')
-    //     cancelAnimationFrame(animationID)
-    // }
 
     boundaries.forEach(boundary => {
         boundary.draw()

@@ -99,7 +99,7 @@ map.forEach((row, i) => {
             scoreEl.innerHTML = score
         }
 ```
- Creation of pellets and dissapearing once PacMan eats them. Score increases by 10 per pellet eaten. 
+ Calling on pellets and having them dissapear once PacMan eats them. Score increases by 10 per pellet eaten. 
 
 
 
