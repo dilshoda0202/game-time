@@ -1,15 +1,15 @@
 # Steps to install game on local computer:
-## Step 1: Open repository https://github.com/dilshoda0202/game-time on GitHub
-## Step 2:Fork repository
-## Step 3: Clone repository to local machine
-## Step 4: Open game-time directory in local machine
-## Step 5: Open index.html in browser
+### Step 1: Open repository https://github.com/dilshoda0202/game-time on GitHub
+### Step 2:Fork repository
+### Step 3: Clone repository to local machine
+### Step 4: Open game-time directory in local machine
+### Step 5: Open index.html in browser
 
 ### You can slso visit: https://my-pacman-game.netlify.app/ to play game
 
 # How this works:
 
-## Code to create and draw player:
+## How I created and drew player:
 ``` JavaScipt
 class Player {
     constructor({
@@ -90,9 +90,9 @@ map.forEach((row, i) => {
 
 
 # Future Goals:
-### Turn PacMan into a unique character
-### Create ghosts
-### Create level up pellets
-### Create a chomping animation for player
-### Improving player's movements
+1. Turn PacMan into a unique character
+2. Create ghosts
+3. Create level up pellets
+4. Create a chomping animation for player
+5. Improving player's movements 
 
