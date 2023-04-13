@@ -109,4 +109,5 @@ map.forEach((row, i) => {
 3. Create level up pellets
 4. Create a chomping animation for player
 5. Improving player's movements 
+6. Create buttons for WASD so that the game can be played on a mobile browser
 
