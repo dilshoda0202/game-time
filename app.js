@@ -48,6 +48,33 @@ class Player {
     }
 }
 
+// class Ghost {
+//     constructor({
+//         position,
+//         velocity,
+//         color = 'red'
+//     }) {
+//         this.position = position
+//         this.velocity = velocity
+//         this.radius = 15
+//         this.color = color
+//         this.prevCollisions = []
+//     }
+//     draw() {
+//         c.beginPath()
+//         c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
+//         c.fillStyle = this.color
+//         c.fill()
+//         c.closePath()
+//     }
+
+//     update() {
+//         this.draw()
+//         this.position.x += this.velocity.x
+//         this.position.y += this.velocity.y
+//     }
+// }
+
 class Pellet {
     constructor({
         position
@@ -66,6 +93,18 @@ class Pellet {
 
 const pellets = []
 const boundaries = []
+// const ghosts = [
+//     new Ghost({
+//         position: {
+//             x: Boundary.width * 6 + Boundary.width / 2,
+//             y: Boundary.height + Boundary.height / 2
+//         },
+//         velocity: {
+//             x: 5,
+//             y: 0
+//         }
+//     })
+// ]
 const player = new Player({
     position: {
         x: Boundary.width + Boundary.width / 2,
@@ -423,6 +462,12 @@ function animate() {
         }
     }
 
+    // win condition
+    if (pellets.length === 0) {
+        console.log('You Win')
+        cancelAnimationFrame(animationID)
+    }
+
     boundaries.forEach(boundary => {
         boundary.draw()
 
@@ -439,7 +484,114 @@ function animate() {
     player.update()
     // player.velocity.y = 0
     // player.velocity.x = 0
+    // ghosts.forEach(ghost => {
+    //     ghost.update()
 
+    //     const collisions = []
+    //     boundaries.forEach(boundary => {
+    //         if (
+    //             !collisions.includes('right') &&
+    //             circleCollidesWithRectangle({
+    //                 circle: {
+    //                     ...ghost, velocity: {
+    //                         x: 5,
+    //                         y: 0
+    //                     }
+    //                 },
+    //                 rectangle: boundary
+    //             })
+    //         ) {
+    //             collisions.push('right')
+    //         }
+    //         if (
+    //             !collisions.includes('right') &&
+    //             circleCollidesWithRectangle({
+    //                 circle: {
+    //                     ...ghost, velocity: {
+    //                         x: -5,
+    //                         y: 0
+    //                     }
+    //                 },
+    //                 rectangle: boundary
+    //             })
+    //         ) {
+    //             collisions.push('left')
+    //         }
+    //         if (
+    //             !collisions.includes('right') &&
+    //             circleCollidesWithRectangle({
+    //                 circle: {
+    //                     ...ghost, velocity: {
+    //                         x: 0,
+    //                         y: -5
+    //                     }
+    //                 },
+    //                 rectangle: boundary
+    //             })
+    //         ) {
+    //             collisions.push('up')
+    //         }
+    //         if (
+    //             !collisions.includes('right') &&
+    //             circleCollidesWithRectangle({
+    //                 circle: {
+    //                     ...ghost, velocity: {
+    //                         x: 0,
+    //                         y: 5
+    //                     }
+    //                 },
+    //                 rectangle: boundary
+    //             })
+    //         ) {
+    //             collisions.push('down')
+    //         }
+    //         if (collisions.length > ghost.prevCollisions.length)
+    //             ghost.prevCollisions = collisions
+    //         if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
+    //             console.log('go')
+
+    //             if (ghost.velocity.x > 0) ghost.prevCollisions.push('right')
+    //             else if (ghost.velocity.x < 0) ghost.prevCollisions.push('left')
+    //             else if (ghost.velocity.y < 0) ghost.prevCollisions.push('up')
+    //             else if (ghost.velocity.y > 0) ghost.prevCollisions.push('down')
+
+
+    //             console.log(collisions)
+    //             console.log(ghost.prevCollisions)
+
+    //             const pathways = ghost.prevCollisions.filter(collision => {
+    //                 return collisions.includes(collision)
+    //             })
+    //             console.log({ pathways })
+
+    //             const direction = pathways[Math.floor(Math.random() * pathways.length)]
+
+    //             console.log({ direction })
+
+    //             switch (direction) {
+    //                 case 'down':
+    //                     ghost.velocity.y = 5
+    //                     ghost.velocity.x = 0
+    //                     break
+    //                 case 'up':
+    //                     ghost.velocity.y = -5
+    //                     ghost.velocity.x = 0
+    //                     break
+    //                 case 'right':
+    //                     ghost.velocity.y = 0
+    //                     ghost.velocity.x = 5
+    //                     break
+    //                 case 'left':
+    //                     ghost.velocity.y = 0
+    //                     ghost.velocity.x = -5
+    //                     break
+
+    //             }
+    //             ghost.prevCollisions = []
+    //         }
+    //         // console.log(collisions)
+    //     })
+    // })
 
 }
 
