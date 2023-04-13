@@ -462,7 +462,7 @@ function animate() {
             score += 10
             scoreEl.innerHTML = score
         }
-        if (score === 100) {
+        if (score === 700) {
             // alert('You Win!')
             const winEl = document.createElement('h1')
             winEl.textContent = 'You Win!'
