@@ -366,6 +366,8 @@ function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
 
+    console.log(score)
+
     if (keys.w.pressed && lastKey === 'w') {
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
@@ -374,7 +376,7 @@ function animate() {
                 circle: {
                     ...player, velocity: {
                         x: 0,
-                        y: -5
+                        y: -3
                     }
                 },
                 rectangle: boundary
@@ -383,7 +385,7 @@ function animate() {
                 player.velocity.y = 0
                 break
             } else {
-                player.velocity.y = -5
+                player.velocity.y = -3
             }
         }
 
@@ -394,7 +396,7 @@ function animate() {
             if (circleCollidesWithRectangle({
                 circle: {
                     ...player, velocity: {
-                        x: -5,
+                        x: -3,
                         y: 0
                     }
                 },
@@ -404,7 +406,7 @@ function animate() {
                 player.velocity.x = 0
                 break
             } else {
-                player.velocity.x = -5
+                player.velocity.x = -3
             }
         }
     } else if (keys.s.pressed && lastKey === 's') {
@@ -415,7 +417,7 @@ function animate() {
                 circle: {
                     ...player, velocity: {
                         x: 0,
-                        y: 5
+                        y: 3
                     }
                 },
                 rectangle: boundary
@@ -424,7 +426,7 @@ function animate() {
                 player.velocity.y = 0
                 break
             } else {
-                player.velocity.y = 5
+                player.velocity.y = 3
             }
         }
     } else if (keys.d.pressed && lastKey === 'd') {
@@ -434,7 +436,7 @@ function animate() {
             if (circleCollidesWithRectangle({
                 circle: {
                     ...player, velocity: {
-                        x: 5,
+                        x: 3,
                         y: 0
                     }
                 },
@@ -444,7 +446,7 @@ function animate() {
                 player.velocity.x = 0
                 break
             } else {
-                player.velocity.x = 5
+                player.velocity.x = 3
             }
         }
     }
@@ -460,13 +462,37 @@ function animate() {
             score += 10
             scoreEl.innerHTML = score
         }
+        if (score === 100) {
+            // alert('You Win!')
+            const winEl = document.createElement('h1')
+            winEl.textContent = 'You Win!'
+            winEl.style.position = 'fixed'
+            winEl.style.top = '50%'
+            winEl.style.left = '50%'
+            winEl.style.color = 'white'
+            document.body.appendChild(winEl)
+            const reset = document.createElement('button')
+            reset.textContent = 'Restart Game'
+            reset.style.position = 'fixed'
+            reset.style.top = '60%'
+            reset.style.left = '50%'
+            // reset.style.color = 'white'
+            reset.addEventListener('click', function () {
+                window.location.reload()
+            })
+            document.body.appendChild(reset)
+
+            console.log('You Win')
+            cancelAnimationFrame(animationID)
+        }
     }
 
     // win condition
-    if (pellets.length === 0) {
-        console.log('You Win')
-        cancelAnimationFrame(animationID)
-    }
+    // if (score === 700) {
+    //     alert('You Win!')
+    //     console.log('You Win')
+    //     cancelAnimationFrame(animationID)
+    // }
 
     boundaries.forEach(boundary => {
         boundary.draw()
@@ -618,8 +644,8 @@ window.addEventListener('keydown', ({ key }) => {
             lastKey = 'd'
             break
     }
-    console.log(keys.d.pressed)
-    console.log(keys.s.pressed)
+    // console.log(keys.d.pressed)
+    // console.log(keys.s.pressed)
 })
 
 window.addEventListener('keyup', ({ key }) => {
@@ -637,6 +663,6 @@ window.addEventListener('keyup', ({ key }) => {
             keys.d.pressed = false
             break
     }
-    console.log(keys.d.pressed)
-    console.log(keys.s.pressed)
+    // console.log(keys.d.pressed)
+    // console.log(keys.s.pressed)
 })
